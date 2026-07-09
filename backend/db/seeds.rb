@@ -5,6 +5,21 @@ Category.destroy_all
 
 # Create categories
 puts "Creating categories..."
+
+# 1. Define the emoji lookup map
+category_emojis = {
+  'Food'           => '🍔',
+  'Transportation' => '🚗',
+  'Entertainment'  => '🎬',
+  'Shopping'       => '🛍️',
+  'Bills'          => '📄',
+  'Healthcare'     => '🏥',
+  'Education'      => '📚',
+  'Travel'         => '✈️',
+  'Personal'       => '👤', # Added default fallback for Personal
+  'Other'          => '📦'
+}
+
 categories = [
   'Food',
   'Transportation',
@@ -18,9 +33,13 @@ categories = [
   'Other'
 ]
 
+# 2. Seed the database with names and matching emojis
 created_categories = categories.map do |cat_name|
-  Category.create!(name: cat_name)
+  Category.find_or_create_by!(name: cat_name) do |category|
+    category.emoji = category_emojis[cat_name] || '📦'
+  end
 end
+
 
 puts "Created #{created_categories.count} categories"
 
