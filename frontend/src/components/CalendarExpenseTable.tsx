@@ -148,7 +148,7 @@ export function CalendarExpenseTable({
                 </span>
               </td>
               <td style={{ ...tdStyle, textAlign: "left", fontWeight: 600 }}>
-                {formatCurrency(expense.amount)}
+                {formatCurrency(Number(expense.amount))}
               </td>
               <td style={{ ...tdStyle, textAlign: "center" }}>
                 <div style={actionButtonsStyle}>
@@ -220,7 +220,7 @@ export function CalendarExpenseTable({
           {deletingExpense && (
             <p style={{ marginBottom: "1.5rem", color: COLORS.text.secondary }}>
               <strong>{deletingExpense.description}</strong> -{" "}
-              {formatCurrency(deletingExpense.amount)}
+              {formatCurrency(Number(deletingExpense.amount))}
             </p>
           )}
           <div
