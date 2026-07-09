@@ -55,8 +55,15 @@ export function ExpenseForm({
     marginTop: "0.5rem",
   };
 
+  const maxToday = React.useMemo(
+    () => new Date().toLocaleDateString("en-CA"),
+    [],
+  );
+
+  const hasErrors = Object.values(errors).some(Boolean);
+
   return (
-    <form onSubmit={handleSubmit} style={formStyle}>
+    <form onSubmit={handleSubmit} style={formStyle} noValidate>
       <TextField
         label="Amount"
         type="number"
@@ -87,7 +94,9 @@ export function ExpenseForm({
         onChange={(e) => handleChange("category_id", e.target.value)}
         error={errors.category_id}
         fullWidth
-        getOptionRenderer={(option: Category) => `${option.emoji} ${option.name}`}
+        getOptionRenderer={(option: Category) =>
+          `${option.emoji} ${option.name}`
+        }
         getOptionValue={(option: Category) => option.id}
         required
       />
@@ -100,10 +109,15 @@ export function ExpenseForm({
         error={errors.date}
         fullWidth
         required
+        max={maxToday}
       />
 
       <div style={buttonGroupStyle}>
-        <Button type="submit" variant="primary" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={isSubmitting || hasErrors}
+        >
           {isSubmitting ? "Submitting..." : submitLabel}
         </Button>
         {onCancel && (
