@@ -17,6 +17,7 @@ export function Button({
   fullWidth = false,
   children,
   disabled,
+  style,
   ...props
 }: ButtonProps) {
   const getVariantStyles = () => {
@@ -72,6 +73,7 @@ export function Button({
     alignItems: "center",
     justifyContent: "center",
     gap: "0.5rem",
+    ...style,
   };
 
   return (
