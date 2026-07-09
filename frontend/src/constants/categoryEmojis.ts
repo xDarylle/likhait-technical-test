@@ -1,19 +1,41 @@
+const EMOJI_POOL: string[] = [
+  // Faces & Expressions
+  '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', 
+  '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', 
+  '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🥸', 
+  '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', 
+  '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😮‍💨', '😤', '😠', 
+
+  // Food & Drink
+  '🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', 
+  '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝', '🍅', '🍆', '🥑', 
+  '🥦', '🥬', '🥒', '🌶️', '🫑', '🌽', '🥕', '🫒', '🧄', '🧅', 
+  '🍄', '🥜', '🫘', '🌰', '🍞', '🥐', '🥖', '🫓', '🥨', '🥯', 
+  '🥞', '🧇', '🧀', '🍖', '🍗', '🥩', '🥓', '🍔', '🍟', '🍕', 
+
+  // Travel & Transportation
+  '🚗', '🚕', '🚙', '🚌', '🚎', '🏎️', '🚓', '🚑', '🚒', '🚐', 
+  '🛻', '🚚', '🚛', '🚜', '🛵', '🚲', '🛴', '🛹', '🚏', '🛣️', 
+  '🛤️', '🛢️', '⛽', '🚨', '🚥', '🚦', '🛑', '🚧', '⚓', '🛟', 
+  '⛵', '🛶', '🚤', '🛳️', '⛴️', '🚢', '✈️', '🛩️', '🛫', '🛬', 
+
+  // Objects & Activities
+  '🛍️', '🛒', '🎁', '🎈', '🎏', '🎀', '🪄', '🪅', '🎊', '🎉', 
+  '🧸', '🪆', '🖼️', '🪞', '🚪', '🪟', '🛏️', '🛋️', '🪑', '🚽', 
+  '🪠', '🚿', '🛁', '🪤', '🪒', '🧴', '🧷', '🧹', '🧺', '🧻', 
+  '🧼', '🧽', '🧯', '🛒', '🚬', '⚰️', '🪦', '⚱️', '🧿', '🪬',
+
+  // Office & Finance
+  '⌚', '📱', '📲', '💻', '⌨️', '🖥️', '🖨️', '🖱️', '🖲️', '🕹️', 
+  '🗜️', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', 
+  '📽️', '🎞️', '📞', '📟', '📠', '📺', '📻', '🎙️', '🎚️', '🎛️', 
+  '🧭', '⏱️', '⏲️', '⏰', '⏳', '⌛', '🧮', '🪙', '💵', '💴'
+];
+
 /**
- * Emoji mappings for expense categories
+ * Returns a single random emoji from the default pool.
  */
-
-export const CATEGORY_EMOJIS: Record<string, string> = {
-  Food: "🍔",
-  Transportation: "🚗",
-  Entertainment: "🎬",
-  Shopping: "🛍️",
-  Bills: "📄",
-  Healthcare: "🏥",
-  Education: "📚",
-  Travel: "✈️",
-  Other: "📦",
-};
-
-export function getCategoryEmoji(category: string): string {
-  return CATEGORY_EMOJIS[category] || "📦";
+export function getRandomEmoji(): string {
+  const randomIndex = Math.floor(Math.random() * EMOJI_POOL.length);
+  return EMOJI_POOL[randomIndex];
 }

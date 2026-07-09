@@ -1,0 +1,19 @@
+{
+  "name": "Expense System Backend",
+  "dockerComposeFile": "../../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/rails",
+
+  "shutdownAction": "stopCompose",
+  "overrideCommand": false,
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Shopify.ruby-lsp",
+        "GitHub.vscode-github-actions",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}
